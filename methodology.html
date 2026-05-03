@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Argo Navigator — Scoring Methodology</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@400;500&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Barlow', sans-serif;
+    background: #ffffff;
+    color: #111111;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 900px;
+  }
+
+  .header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #CC0000;
+  }
+
+  .project-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #111111;
+  }
+
+  .project-name span { color: #CC0000; }
+
+  .project-meta {
+    font-size: 12px;
+    color: #555555;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-align: right;
+    line-height: 1.6;
+  }
+
+  .diagram-wrap {
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    font-family: 'Barlow', sans-serif;
+  }
+
+  .node { cursor: pointer; }
+  .node:hover rect { opacity: 0.85; }
+
+  .box-blue   { fill: #E6F1FB; stroke: #185FA5; }
+  .box-pink   { fill: #FBEAF0; stroke: #993556; }
+  .box-teal   { fill: #E1F5EE; stroke: #0F6E56; }
+  .box-amber  { fill: #FAEEDA; stroke: #854F0B; }
+  .box-gray   { fill: #F1EFE8; stroke: #5F5E5A; }
+  .box-green  { fill: #EAF3DE; stroke: #3B6D11; }
+
+  .label-blue   { fill: #0C447C; }
+  .label-pink   { fill: #72243E; }
+  .label-teal   { fill: #085041; }
+  .label-amber  { fill: #633806; }
+  .label-gray   { fill: #444441; }
+  .label-green  { fill: #27500A; }
+  .label-sub    { fill: #888780; }
+
+  .arr { stroke: #888780; stroke-width: 1.5; fill: none; }
+  .divider { stroke: #D3D1C7; stroke-width: 0.5; fill: none; }
+
+  .tooltip {
+    position: fixed;
+    background: #111111;
+    color: #ffffff;
+    font-size: 12px;
+    padding: 6px 12px;
+    border-radius: 6px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.15s;
+    max-width: 220px;
+    line-height: 1.5;
+    z-index: 100;
+  }
+
+  .footer {
+    margin-top: 1.5rem;
+    font-size: 10px;
+    color: #aaaaaa;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <div class="project-name">Argo <span>Navigator</span> — Scoring Methodology</div>
+    <div class="project-meta">Eamon's quantitative model<br>Florida · March 2026</div>
+  </div>
+
+  <div class="diagram-wrap">
+  <svg viewBox="0 0 880 440" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M2 1L8 5L2 9" fill="none" stroke="#888780" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </marker>
+    </defs>
+
+    <text x="440" y="26" text-anchor="middle" font-size="12" class="label-sub" font-family="Barlow, sans-serif">Four inputs · one composite score · two outputs</text>
+
+    <g class="node" data-tip="Measures density and scale of maritime supply chain facilities in each tract — Primary Assembly, Propulsion, Electronics, Raw Materials, and Logistics.">
+      <rect x="40" y="50" width="150" height="68" rx="8" stroke-width="0.5" class="box-blue"/>
+      <text x="115" y="80" text-anchor="middle" font-size="14" font-weight="600" font-family="Barlow, sans-serif" class="label-blue">Industry score</text>
+      <text x="115" y="101" text-anchor="middle" font-size="11" font-family="Barlow, sans-serif" class="label-sub">Facilities + sector weight</text>
+    </g>
+
+    <g class="node" data-tip="Measures how underserved a tract is across 12 community domains — income, education, housing, health, workforce, and more. Higher = more room for investment to help.">
+      <rect x="40" y="138" width="150" height="68" rx="8" stroke-width="0.5" class="box-pink"/>
+      <text x="115" y="168" text-anchor="middle" font-size="14" font-weight="600" font-family="Barlow, sans-serif" class="label-pink">Socio upside</text>
+      <text x="115" y="189" text-anchor="middle" font-size="11" font-family="Barlow, sans-serif" class="label-sub">12 community domains</text>
+    </g>
+
+    <g class="node" data-tip="Identifies tracts with a focused, addressable set of gaps — not too broken, not already thriving. A Gaussian curve rewards tracts where ~45% of indicators are underperforming.">
+      <rect x="40" y="226" width="150" height="68" rx="8" stroke-width="0.5" class="box-teal"/>
+      <text x="115" y="256" text-anchor="middle" font-size="14" font-weight="600" font-family="Barlow, sans-serif" class="label-teal">Investability</text>
+      <text x="115" y="277" text-anchor="middle" font-size="11" font-family="Barlow, sans-serif" class="label-sub">Targeted gap window</text>
+    </g>
+
+    <g class="node" data-tip="A tract adjacent to strong industry still benefits from shared labour markets and supply chains. Computed as a 50/50 blend of a tract's own score and its immediate neighbours' mean score.">
+      <rect x="40" y="314" width="150" height="68" rx="8" stroke-width="0.5" class="box-amber"/>
+      <text x="115" y="344" text-anchor="middle" font-size="14" font-weight="600" font-family="Barlow, sans-serif" class="label-amber">Accessibility</text>
+      <text x="115" y="365" text-anchor="middle" font-size="11" font-family="Barlow, sans-serif" class="label-sub">Proximity to industry</text>
+    </g>
+
+    <line x1="190" y1="84"  x2="300" y2="205" stroke="#185FA5" stroke-width="1" fill="none" marker-end="url(#arr)"/>
+    <line x1="190" y1="172" x2="300" y2="212" stroke="#993556" stroke-width="1" fill="none" marker-end="url(#arr)"/>
+    <line x1="190" y1="260" x2="300" y2="219" stroke="#0F6E56" stroke-width="1" fill="none" marker-end="url(#arr)"/>
+    <line x1="190" y1="348" x2="300" y2="226" stroke="#854F0B" stroke-width="1" fill="none" marker-end="url(#arr)"/>
+
+    <text x="272" y="192" text-anchor="middle" font-size="18" font-family="Barlow, sans-serif" class="label-sub">×</text>
+
+    <g class="node" data-tip="The product of all four components, each normalised to [0,1]. Only tracts in the top 20% of composite scores that also pass the industry accessibility floor become anchor tracts.">
+      <rect x="306" y="178" width="168" height="68" rx="8" stroke-width="0.5" class="box-gray"/>
+      <text x="390" y="208" text-anchor="middle" font-size="14" font-weight="600" font-family="Barlow, sans-serif" class="label-gray">Composite score</text>
+      <text x="390" y="229" text-anchor="middle" font-size="11" font-family="Barlow, sans-serif" class="label-sub">All four × normalised [0–1]</text>
+    </g>
+
+    <line x1="474" y1="205" x2="550" y2="172" stroke="#888780" stroke-width="1" fill="none" marker-end="url(#arr)"/>
+    <line x1="474" y1="218" x2="550" y2="258" stroke="#888780" stroke-width="1" fill="none" marker-end="url(#arr)"/>
+
+    <g class="node" data-tip="173 clusters identified across 33 counties. Each cluster is anchored by a high-scoring tract and expands outward to contiguous neighbours using Queen contiguity weights.">
+      <rect x="556" y="130" width="280" height="68" rx="8" stroke-width="0.5" class="box-blue"/>
+      <text x="696" y="160" text-anchor="middle" font-size="14" font-weight="600" font-family="Barlow, sans-serif" class="label-blue">173 investment clusters</text>
+      <text x="696" y="181" text-anchor="middle" font-size="11" font-family="Barlow, sans-serif" class="label-sub">Anchor tracts + contiguous neighbours</text>
+    </g>
+
+    <g class="node" data-tip="292 tracts within the identified clusters also qualify as federal Opportunity Zones — combining investment potential with eligibility for significant tax incentives for investors.">
+      <rect x="556" y="222" width="280" height="68" rx="8" stroke-width="0.5" class="box-green"/>
+      <text x="696" y="252" text-anchor="middle" font-size="14" font-weight="600" font-family="Barlow, sans-serif" class="label-green">292 Opportunity Zones</text>
+      <text x="696" y="273" text-anchor="middle" font-size="11" font-family="Barlow, sans-serif" class="label-sub">Federal OZ criteria met · tax incentives</text>
+    </g>
+
+    <line x1="40"  y1="416" x2="840" y2="416" class="divider"/>
+    <line x1="296" y1="410" x2="296" y2="422" class="divider"/>
+    <line x1="546" y1="410" x2="546" y2="422" class="divider"/>
+
+    <text x="168" y="432" text-anchor="middle" font-size="11" font-family="Barlow, sans-serif" class="label-sub">Inputs</text>
+    <text x="420" y="432" text-anchor="middle" font-size="11" font-family="Barlow, sans-serif" class="label-sub">Model</text>
+    <text x="696" y="432" text-anchor="middle" font-size="11" font-family="Barlow, sans-serif" class="label-sub">Outputs</text>
+  </svg>
+  </div>
+
+  <div class="footer">DIBI · Argo Navigator · Scoring Methodology · 2026</div>
+</div>
+
+<div class="tooltip" id="tip"></div>
+
+<script>
+  const tip = document.getElementById('tip');
+  document.querySelectorAll('.node').forEach(n => {
+    n.addEventListener('mouseenter', e => {
+      const text = n.getAttribute('data-tip');
+      if (!text) return;
+      tip.textContent = text;
+      tip.style.opacity = '1';
+    });
+    n.addEventListener('mousemove', e => {
+      tip.style.left = (e.clientX + 14) + 'px';
+      tip.style.top  = (e.clientY - 10) + 'px';
+    });
+    n.addEventListener('mouseleave', () => {
+      tip.style.opacity = '0';
+    });
+  });
+</script>
+</body>
+</html>

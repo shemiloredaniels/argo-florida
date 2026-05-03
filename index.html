@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<!-- saved from url=(0061)file:///Users/shemiloredaniels/Downloads/argo_stat_cards.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Argo Navigator — Key Statistics</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@400;500&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Barlow', sans-serif;
+    background: #ffffff;
+    color: #111111;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 860px;
+  }
+
+  .header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #CC0000;
+  }
+
+  .project-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #111111;
+  }
+
+  .project-name span {
+    color: #CC0000;
+  }
+
+  .project-meta {
+    font-size: 12px;
+    color: #555555;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-align: right;
+    line-height: 1.6;
+  }
+
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 2px;
+    margin-bottom: 2px;
+  }
+
+  .stat-card {
+    background: #f5f5f5;
+    padding: 1.5rem 1rem 1.25rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.2s;
+  }
+
+  .stat-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: #CC0000;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+    transform-origin: left;
+  }
+
+  .stat-card:hover::before {
+    transform: scaleX(1);
+  }
+
+  .stat-card:hover {
+    background: #ebebeb;
+  }
+
+  .stat-number {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 52px;
+    font-weight: 700;
+    line-height: 1;
+    color: #CC0000;
+    margin-bottom: 10px;
+    letter-spacing: -0.01em;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    color: #111111;
+    line-height: 1.4;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+  }
+
+  .stat-source {
+    font-size: 10px;
+    color: #888888;
+    margin-top: 6px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .region-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+  }
+
+  .region-card {
+    background: #f5f5f5;
+    padding: 1rem 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    transition: background 0.2s;
+  }
+
+  .region-card:hover {
+    background: #ebebeb;
+  }
+
+  .region-accent {
+    width: 3px;
+    height: 36px;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+
+  .region-text {}
+
+  .region-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #111111;
+    margin-bottom: 3px;
+  }
+
+  .region-detail {
+    font-size: 11px;
+    color: #666666;
+    letter-spacing: 0.03em;
+  }
+
+  .footer {
+    margin-top: 1.5rem;
+    font-size: 10px;
+    color: #aaaaaa;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  @media (max-width: 600px) {
+    .stat-grid { grid-template-columns: repeat(3, 1fr); }
+    .stat-number { font-size: 38px; }
+    .project-name { font-size: 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <div class="project-name">Argo <span>Navigator</span></div>
+    <div class="project-meta">
+      Florida Panhandle &amp; High-Tech Corridor<br>
+      March 2026
+    </div>
+  </div>
+
+  <div class="stat-grid">
+    <div class="stat-card">
+      <div class="stat-number">33</div>
+      <div class="stat-label">Counties analyzed</div>
+      <div class="stat-source">Both regions</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">173</div>
+      <div class="stat-label">Investment clusters identified</div>
+      <div class="stat-source">Quantitative model</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">292</div>
+      <div class="stat-label">Opportunity Zone tracts</div>
+      <div class="stat-source">Federal OZ criteria</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">3</div>
+      <div class="stat-label">Data layers combined</div>
+      <div class="stat-source">Quant · Spatial · Qual</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">5</div>
+      <div class="stat-label">Industry sectors tracked</div>
+      <div class="stat-source">Maritime supply chain</div>
+    </div>
+  </div>
+
+  <div class="region-row">
+    <div class="region-card">
+      <div class="region-accent" style="background:#CC0000;"></div>
+      <div class="region-text">
+        <div class="region-name">High-Tech Corridor</div>
+        <div class="region-detail">23 counties · Tampa Bay to Space Coast</div>
+      </div>
+    </div>
+    <div class="region-card">
+      <div class="region-accent" style="background:#888888;"></div>
+      <div class="region-text">
+        <div class="region-name">Florida Panhandle</div>
+        <div class="region-detail">10 counties · Pensacola to Gulf County</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">DIBI · Argo Navigator · Florida Maritime Investment Analysis · 2026</div>
+
+</div>
+
+
+</body></html>
